@@ -1,0 +1,104 @@
+.mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    .toast-msg {
+        font-size: 24px;
+        text-align: center;
+        position: relative;
+        transform: translateX(-50%);
+        color: #fff;
+        left: 50%;
+        padding: 18px 27px;
+        overflow: hidden;
+        border-radius: 4px;
+        white-space: nowrap;
+        display: block;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .toast {
+        font-size: 0px;
+        padding: 27px 9px;
+        width: 226px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: #f2f2f2;
+        background: rgba(51, 51, 51, 0.94);
+        border-radius: 9px;
+        text-align: center;
+        .icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 36px;
+            border: 1px solid #f2f2f2;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            position: relative;
+            margin-bottom: 18px;
+            box-sizing: border-box;
+            .success-icon {
+                border-right: 1px solid #f2f2f2;
+                border-bottom: 1px solid #f2f2f2;
+                transform: rotate(45deg);
+                width: 27px;
+                height: 45px;
+                margin-top: -18px;
+            }
+            .fail-icon {
+                &:before {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                    border-top: 1px solid #f2f2f2;
+                    width: 50px;
+                    height: 0px;
+                }
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                    border-top: 1px solid #f2f2f2;
+                    width: 50px;
+                    height: 0px;
+                }
+            }
+            .warning-icon {
+                &:before {
+                    display: block;
+                    position: absolute;
+                    top: 15px;
+                    left: 50%;
+                    background: #f2f2f2;
+                    width: 1px;
+                    height: 26px;
+                }
+                &:after {
+                    position: absolute;
+                    bottom: 14px;
+                    left: 50%;
+                    background: #f2f2f2;
+                    width: 4px;
+                    margin-left: -2px;
+                    border-radius: 50%;
+                    height: 4px;
+                }
+            }
+        }
+        .msg {
+            font-size: 26px;
+        }
+    }
+}
