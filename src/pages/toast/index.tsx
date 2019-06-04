@@ -11,24 +11,24 @@ import $3 from '@/component/Loading/index';
 import $4 from '@/component/Actionsheet/index';
 
 export default class App extends React.Component {
- 	
+
 	toast() {
-//		$.toast({
-//			type: 3,
-//			content: "我是默认Toast",
-//			time: 1000,
-//			opacity: .5,
-//			callback() {
-//				console.log("我是Toast的回调！")
-//			}
-//		});
-        
-        
-		//$.toast("我是默认Toast");
-		
-		$.success("哈哈组哈哈组件哈哈哈哈组件哈哈哈哈组件哈哈件哈哈",1000,0,()=>{
-			console.log("ok")
-		})
+		//		$.toast({
+		//			type: 3,
+		//			content: "我是默认Toast",
+		//			time: 1000,
+		//			opacity: .5,
+		//			callback() {
+		//				console.log("我是Toast的回调！")
+		//			}
+		//		});
+
+
+		$.success("充值成功",1000);
+
+//		$.warning("哈哈组哈哈组件哈哈哈哈组件哈哈哈哈组件哈哈件哈哈", 10000000000, 0, () => {
+//			console.log("ok")
+//		})
 	}
 
 	dialog() {
@@ -60,67 +60,68 @@ export default class App extends React.Component {
 
 	loading() {
 		$3.loading({
-			type: 1,
+			type: 0,
 			content: "我是默认我是默认",
-			opacity:.3
+			opacity: .3
 		});
-		
+
 		//$3.loading('疯狂加载中',0,.4);
 		setTimeout(() => { //3s后隐藏
 			$3.hide();
 		}, 3000000);
 	}
-	
-    alert() {
+
+	alert() {
 		$2.alert({
 			type: 0,
 			opacity: 0.5,
-			title: "我是title",
-			content: "我是我是content我是content我是content我是content",
+			title: "提示信息",
+			content: "消息提示成功",
 			btnSucc: "确定",
-			timer:5,
+			timer: 500000000000,
 			onSucc(e) {
 				//$2.hide()
 			}
 		});
 	}
 
-	actionsheet(){
+	actionsheet() {
 		$4.actionsheet({
-			title:'我是标题',
-			arr:['编辑', '收藏', '分享', '删除',Math.random()],
-			opacity:.3,
-			onItem(obj,index){
-				console.log(obj,index);
+			title: '我是标题',
+			arr: ['编辑', '收藏', '分享', '删除', Math.random()],
+			opacity: .3,
+			onItem(obj, index) {
+				console.log(obj, index);
 			},
 			onCancel(e) {
 				$4.hide();
-			}})
+			}
+		})
 	}
 	render() {
-		return(
-			<div>
-		        <div className="App">
-		            <div className="App-header">
-		                <img alt={`img`} src={logo} className="App-logo2"/>
-		            </div>
-		            <div>
-		                <button onClick={this.loading}>点击弹出loading</button>
-		            </div>
-		            <div>
-		                <button onClick={this.toast}>点击弹出Toast</button>
-		            </div>
-		            <div>
-		                <button onClick={this.dialog}>点击弹出dialog</button>
-		            </div>
-		            <div>
-		                <button onClick={this.alert}>点击弹出Alert</button>
-		            </div>
-		            <div>
-		                <button onClick={this.actionsheet}>点击弹出Actionsheet</button>
-		            </div>
-		        </div>
-		    </div>
+		return (
+
+			<div className="App">
+				<div className="App-header">
+					<img alt={`img`} src={logo} className="App-logo2" />
+				</div>
+				<div>
+					<button onClick={this.loading}>点击弹出loading</button>
+				</div>
+				<div>
+					<button onClick={this.toast}>点击弹出Toast</button>
+				</div>
+				<div>
+					<button onClick={this.dialog}>点击弹出dialog</button>
+				</div>
+				<div>
+					<button onClick={this.alert}>点击弹出Alert</button>
+				</div>
+				<div>
+					<button onClick={this.actionsheet}>点击弹出Actionsheet</button>
+				</div>
+			</div>
+
 		);
 	}
 }

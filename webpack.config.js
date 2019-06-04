@@ -6,8 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css压缩
 const CleanWebpackPlugin = require('clean-webpack-plugin') //清空
 var WebpackNotifierPlugin = require('webpack-notifier');   //消息通知
 const DevserverQRcodeWebpackPlugin = require('devserver-qrcode-webpack-plugin');   //二维码
-const webpack  = require('webpack')
-
+const webpack = require('webpack')
+const HappyPack = require('happypack'); //多线程运行
+const happyThreadPool = HappyPack.ThreadPool({
+	size: 4
+});
 const os = require('os');
 function getNetworkIp() {      //获取IP
 	let needHost = ''; // 打开的host
@@ -43,14 +46,14 @@ argv.forEach(v => {
 });
 
 const plugins = [
-//	new webpack.DllPlugin({
-//          // 定义程序中打包公共文件的入口文件vendor.js
-//          context: process.cwd(),
-//          // manifest.json文件的输出位置
-//          path: path.join('./src', 'js', 'dll', '[name]-manifest.json'),
-//          // 定义打包的公共vendor文件对外暴露的函数名
-//          name: '[name]_[hash]'
-//      }),
+	//	new webpack.DllPlugin({
+	//          // 定义程序中打包公共文件的入口文件vendor.js
+	//          context: process.cwd(),
+	//          // manifest.json文件的输出位置
+	//          path: path.join('./src', 'js', 'dll', '[name]-manifest.json'),
+	//          // 定义打包的公共vendor文件对外暴露的函数名
+	//          name: '[name]_[hash]'
+	//      }),
 	new CleanWebpackPlugin(['dist'], {
 		root: __dirname,
 	}),
@@ -71,7 +74,13 @@ const plugins = [
 		chunkFilename: '[chunkhash].css',
 		filename: 'index.css',
 	}),
-
+	new HappyPack({
+		//多线程运行 默认是电脑核数-1
+		id: 'babel', //对于loaders id
+		loaders: ['babel-loader?cacheDirectory'], //是用babel-loader解析
+		threadPool: happyThreadPool,
+		verboseWhenProfiling: true, //显示信息
+	}),
 	new UglifyJsPlugin({
 		sourceMap: true, //webpack会生成map，所以这里不需要
 		parallel: 2,
@@ -99,6 +108,7 @@ module.exports = {
 		compress: true, //开发服务器是否启动gzip等压缩
 		port: 12307, //端口
 		historyApiFallback: true, //不会出现404页面，避免找不到
+		hotOnly:true
 	},
 	output: {
 		filename: 'index.js',
@@ -137,6 +147,8 @@ module.exports = {
 		{
 			test: /\.(js|jsx|ts|tsx)?$/,
 			use: [{
+				loader: 'happypack/loader?id=babel',
+			}, {
 				loader: 'babel-loader',
 				options: {
 
@@ -158,6 +170,7 @@ module.exports = {
 			use: [{
 				loader: MiniCssExtractPlugin.loader
 			},
+			
 			{
 				loader: 'css-loader',
 			},
@@ -179,17 +192,34 @@ module.exports = {
 								flexbox: 'no-2009',
 							},
 							stage: 3,
+							browsers: [
+								'> 1%',
+								'last 2 versions',
+								'Firefox ESR',
+								'Opera 12.1',
+								'not ie <= 8',
+								'Android >= 4.0',
+								'iOS 7'
+							]
 						}),
 						require('postcss-aspect-ratio-mini')({}),
-						require('postcss-px-to-viewport')({
-							viewportWidth: 750, // (Number) The width of the viewport.
-							viewportHeight: 1334, // (Number) The height of the viewport.
-							unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to.
-							viewportUnit: 'vw', // (String) Expected units.
-							selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px.
-							minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
-							mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
-							exclude: /heart/gi //过滤文件夹
+						// require('postcss-px-to-viewport')({
+						// 	viewportWidth: 750, // (Number) The width of the viewport.
+						// 	viewportHeight: 1334, // (Number) The height of the viewport.
+						// 	unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to.
+						// 	viewportUnit: 'vw', // (String) Expected units.
+						// 	selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px.
+						// 	minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
+						// 	mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
+						// 	exclude: /heart/gi //过滤文件夹
+						// }),
+						require('postcss-plugin-px2rem')({
+							rootValue: {
+								px: 124.2,
+								rpx: 248.4
+							},
+							unitPrecision: 3,
+							minPixelValue: 2
 						}),
 						require('postcss-write-svg')({
 							utf8: false

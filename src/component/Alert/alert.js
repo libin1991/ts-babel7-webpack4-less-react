@@ -20,7 +20,7 @@ export default class Alert extends React.Component {
 			<div className="mask" style={style}>
 				<div className="alert">
 					<div className="title1">{title}</div>
-					<p className="title2">{content}</p>
+					<p className="title1 title2">{content}</p>
 					<div className="btnlist onepx-top-border">
 						<div className="ok" onClick={(e)=>{onSucc(e)}}>{`${btnSucc} (${timer})`}</div>
 					</div>

@@ -8,19 +8,19 @@ export default class Global {
 	static alert(option) {
 		var setting = {
 			type: 0,
-			title: "我是默认title",
-			content: "我是默认content",
-			btnSucc: "我是默认btn",
+			title: "提示信息",
+			content: "消息提示成功",
+			btnSucc: "确定",
 			CloseShow: false,
 			timer:0,
 			onClose() {
-				console.log("蒙层回调");
+				console.log("");
 			},
 			onSucc() {
-				console.log("成功回调");
+				console.log("");
 			},
 			onFail() {
-				console.log("失败回调");
+				console.log("");
 			}
 		};
 
@@ -43,17 +43,6 @@ export default class Global {
 		document.body.appendChild(div);
 
 		ReactDOM.render(<Alert setting={setting} />, div);
-        
-        if(setting.timer){
-        	   var ti=setInterval(()=>{
-        	      setting.timer--;
-        	   	  ReactDOM.render(<Alert setting={setting} />, div);
-        	   	  if(setting.timer<0){
-        	   	  	 clearInterval(ti);
-        	   	  	 this.hide();
-        	   	  }
-        	   },1000)
-        }
         
 	}
 

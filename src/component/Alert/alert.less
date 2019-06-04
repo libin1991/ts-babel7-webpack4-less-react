@@ -10,46 +10,25 @@
     align-items: center;
     z-index: 100;
     .alert {
-        width: 545px;
+        width: 945px;
         overflow: hidden;
         background: rgba(252, 252, 252, 1);
-        border-radius: 9px;
+        border-radius: 48px;
         .title1 {
-            font-size: 36px;
-            padding: 33px 0rem;
-            color: #333333;
+            font-size: 54px;
+            color: #000000;
+            padding: 43px 0px 24px;
+            letter-spacing: 0;
             text-align: center;
-        }
-        .title2 {
-            box-sizing: border-box;
-            font-size: 28px;
-            padding: 0px 10px 36px;
-            color: #797979;
-            text-align: center;
+            &.title2 {
+                font-weight: 500;
+            }
         }
         .btnlist {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3px;
-            height: 82px;
             position: relative;
-            font-size: 28px;
-            .ok {
-                flex: 1;
-                height: 82px;
-                line-height: 82px;
-                text-align: center;
-                color: #636363;
-            }
-            .abort {
-                position: relative;
-                flex: 1;
-                line-height: 82px;
-                height: 82px;
-                text-align: center;
-                color: #FF8200;
-            }
+            text-align: center;
+            font-size: 48px;
+            padding: 43px 0px;
         }
     }
 }

@@ -9,36 +9,22 @@
     justify-content: center;
     align-items: center;
     z-index: 10000;
-    .toast-msg {
-        font-size: 24px;
-        text-align: center;
-        position: relative;
-        transform: translateX(-50%);
-        color: #fff;
-        left: 50%;
-        padding: 18px 27px;
-        overflow: hidden;
-        border-radius: 4px;
-        white-space: nowrap;
-        display: block;
-        background: rgba(0, 0, 0, 0.7);
-    }
     .toast {
         font-size: 0px;
-        padding: 27px 9px;
-        width: 226px;
+        padding: 40px 30px 40px;
+        width: 330px;
         overflow: hidden;
         display: flex;
         align-items: center;
         flex-direction: column;
         color: #f2f2f2;
         background: rgba(51, 51, 51, 0.94);
-        border-radius: 9px;
+        border-radius: 18px;
         text-align: center;
         .icon {
-            width: 72px;
-            height: 72px;
-            border-radius: 36px;
+            width: 132px;
+            height: 132px;
+            border-radius: 66px;
             border: 1px solid #f2f2f2;
             position: relative;
             justify-content: center;
@@ -48,57 +34,61 @@
             margin-bottom: 18px;
             box-sizing: border-box;
             .success-icon {
-                border-right: 1px solid #f2f2f2;
-                border-bottom: 1px solid #f2f2f2;
+                border-right: 2px solid #f2f2f2;
+                border-bottom: 2px solid #f2f2f2;
                 transform: rotate(45deg);
-                width: 27px;
-                height: 45px;
-                margin-top: -18px;
+                width: 40px;
+                height: 75px;
+                margin-top: -15px;
             }
             .fail-icon {
                 &:before {
+                    content: '';
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%) rotate(45deg);
-                    border-top: 1px solid #f2f2f2;
-                    width: 50px;
+                    border-top: 2px solid #f2f2f2;
+                    width: 80px;
                     height: 0px;
                 }
-                &:after {
+                &:after {content: '';
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%) rotate(-45deg);
-                    border-top: 1px solid #f2f2f2;
-                    width: 50px;
+                    border-top: 2px solid #f2f2f2;
+                    width: 80px;
                     height: 0px;
                 }
             }
             .warning-icon {
                 &:before {
+                    content: '';
                     display: block;
                     position: absolute;
-                    top: 15px;
+                    top: 20px;
                     left: 50%;
                     background: #f2f2f2;
-                    width: 1px;
-                    height: 26px;
+                    margin-left: -3px;
+                    width: 6px;
+                    height: 56px;
                 }
-                &:after {
+                &:after {content: '';
                     position: absolute;
-                    bottom: 14px;
+                    bottom: 24px;
                     left: 50%;
                     background: #f2f2f2;
-                    width: 4px;
-                    margin-left: -2px;
-                    border-radius: 50%;
-                    height: 4px;
+                    width: 10px;
+                    height: 10px;
+                    margin-left: -5px;
+                    border-radius: 5px;
+                    
                 }
             }
         }
         .msg {
-            font-size: 26px;
+            font-size: 46px;
         }
     }
 }
