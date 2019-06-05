@@ -10,6 +10,8 @@ import $2 from '@/component/Alert/index';
 import $3 from '@/component/Loading/index';
 import $4 from '@/component/Actionsheet/index';
 
+
+
 export default class App extends React.Component {
 
 	toast() {
@@ -100,7 +102,7 @@ export default class App extends React.Component {
 	}
 	render() {
 		return (
-
+        
 			<div className="App">
 				<div className="App-header">
 					<img alt={`img`} src={logo} className="App-logo2" />
@@ -121,7 +123,6 @@ export default class App extends React.Component {
 					<button onClick={this.actionsheet}>点击弹出Actionsheet</button>
 				</div>
 			</div>
-
 		);
 	}
 }

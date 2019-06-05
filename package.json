@@ -70,6 +70,7 @@
     "@types/react-redux": "^6.0.12",
     "autoprefixer": "^9.1.2",
     "awesome-typescript-loader": "^5.2.0",
+    "classnames": "^2.2.6",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "devserver-qrcode-webpack-plugin": "^0.0.6",
