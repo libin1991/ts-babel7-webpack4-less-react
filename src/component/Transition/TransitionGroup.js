@@ -16,7 +16,7 @@ export default class TransitionGroup extends React.Component {
         this.state = {
             children: Children.map(props.children, (child) => {
             	
-            	console.log(child);
+            	
             	
             	
                 const { show, ...inProps } = child.props

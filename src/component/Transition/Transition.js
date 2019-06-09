@@ -128,10 +128,7 @@ export default class Transition extends React.Component {
 		delete childProps.onEnter;
 		delete childProps.onLeave;
 		delete childProps.show;
-		
-		
-		console.log(React.cloneElement(child, childProps))
-		
+				
 		return React.cloneElement(child, childProps)
 	}
 }
