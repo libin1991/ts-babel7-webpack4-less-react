@@ -26,7 +26,7 @@ export default class App extends React.Component {
 		//		});
 
 
-		$.success("充值成功",1000);
+		$.success("充值成功",2500);
 
 //		$.warning("哈哈组哈哈组件哈哈哈哈组件哈哈哈哈组件哈哈件哈哈", 10000000000, 0, () => {
 //			console.log("ok")
@@ -70,7 +70,7 @@ export default class App extends React.Component {
 		//$3.loading('疯狂加载中',0,.4);
 		setTimeout(() => { //3s后隐藏
 			$3.hide();
-		}, 3000000);
+		}, 3000);
 	}
 
 	alert() {
@@ -82,7 +82,7 @@ export default class App extends React.Component {
 			btnSucc: "确定",
 			timer: 500000000000,
 			onSucc(e) {
-				//$2.hide()
+				$2.hide()
 			}
 		});
 	}

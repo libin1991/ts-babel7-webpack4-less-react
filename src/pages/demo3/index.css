@@ -1,0 +1,19 @@
+ #main {
+ 	width: 100%;
+ 	height: 100%;
+ }
+ 
+ .lsit-con {
+ 	display: block;
+ 	width: 100%;
+ 	height: 50PX;
+ 	line-height: 50PX;
+ 	font-size: 16PX;
+ 	padding-left: 15PX;
+ 	color: #444;
+ 	background-color: #fff;
+ }
+ 
+ .lsit-con:nth-child(2n) {
+ 	background-color: #eee;
+ }

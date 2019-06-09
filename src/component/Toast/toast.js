@@ -1,6 +1,10 @@
 import React from "react";
 import './toast.less'
 
+import Transition from '../transition/Transition'
+import TransitionGroup from '../transition/TransitionGroup'
+
+
 export default class Toast extends React.Component {
 	checkToast(n) {
 		switch(n) {
@@ -35,10 +39,14 @@ export default class Toast extends React.Component {
 
 		return(
 			<div className="mask" style={style}>
-			    <div className="toast">
-			        {this.checkToast(type)}
-			        <div className="msg">{content}</div>
-			    </div>
+			 <TransitionGroup component="div">
+				  <Transition className="slideDown"> 
+				     <div className="toast">
+				        {this.checkToast(type)}
+				        <div className="msg">{content}</div>
+				     </div>
+				   </Transition>
+				</TransitionGroup>
 			</div>
 		);
 	}

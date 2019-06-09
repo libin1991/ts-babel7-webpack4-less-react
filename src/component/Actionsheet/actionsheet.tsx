@@ -1,6 +1,6 @@
 import React from "react"
 import './actionsheet.less';
-import Transition from '../Transition/index';
+ 
 
 export default class Actionsheet extends React.Component {
 	taClick(event, flag, ...list) {
@@ -34,7 +34,7 @@ export default class Actionsheet extends React.Component {
 				style={style}
 				onClick={(e) => this.taClick(e, -1)}>
 				<div>
-					<Transition>
+					 
 						<div className='actionsheet' ref="actionsheet">
 							<div className="line actionsheet-title onepx-bottom-border"
 								onClick={(e) => this.taClick(e)}>{title}</div>
@@ -49,7 +49,7 @@ export default class Actionsheet extends React.Component {
 							</div>
 							<div className="line actionsheet-cancel" onClick={(e) => this.taClick(e, -1)}>取消</div>
 						</div>
-					</Transition>
+					 
 				</div>
 
 			</div>

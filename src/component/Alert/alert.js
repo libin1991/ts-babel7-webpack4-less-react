@@ -1,6 +1,7 @@
 import React from "react";
 import './alert.less'
-
+import Transition from '../transition/Transition'
+import TransitionGroup from '../transition/TransitionGroup'
 export default class Alert extends React.Component {
 	render() {
 		let {
@@ -18,13 +19,17 @@ export default class Alert extends React.Component {
 
 		return(
 			<div className="mask" style={style}>
-				<div className="alert">
-					<div className="title1">{title}</div>
-					<p className="title1 title2">{content}</p>
-					<div className="btnlist onepx-top-border">
-						<div className="ok" onClick={(e)=>{onSucc(e)}}>{`${btnSucc} (${timer})`}</div>
+			    <TransitionGroup component="div">
+				  <Transition className="slideDown"> 
+					<div className="alert">
+						<div className="title1">{title}</div>
+						<p className="title1 title2">{content}</p>
+						<div className="btnlist onepx-top-border">
+							<div className="ok" onClick={(e)=>{onSucc(e)}}>{`${btnSucc}`}</div>
+						</div>
 					</div>
-				</div>
+				  </Transition>
+				</TransitionGroup>
 			</div>
 		);
 	}
