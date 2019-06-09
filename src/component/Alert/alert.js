@@ -20,7 +20,7 @@ export default class Alert extends React.Component {
 		return(
 			<div className="mask" style={style}>
 			    <TransitionGroup component="div">
-				  <Transition className="slideDown"> 
+				  <Transition className="fade"> 
 					<div className="alert">
 						<div className="title1">{title}</div>
 						<p className="title1 title2">{content}</p>

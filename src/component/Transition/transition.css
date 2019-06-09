@@ -82,16 +82,16 @@
 @-webkit-keyframes rodal-slideDown-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(0, -200px, 0);
-        transform: translate3d(0, -200px, 0);
+        -webkit-transform: translate3d(0, -300px, 0);
+        transform: translate3d(0, -300px, 0);
     }
 }
 
 @keyframes rodal-slideDown-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(0, -200px, 0);
-        transform: translate3d(0, -200px, 0);
+        -webkit-transform: translate3d(0, -300px, 0);
+        transform: translate3d(0, -300px, 0);
     }
 }
 
@@ -103,16 +103,16 @@
 @-webkit-keyframes rodal-slideDown-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(0, -200px, 0);
-        transform: translate3d(0, -200px, 0);
+        -webkit-transform: translate3d(0, -300px, 0);
+        transform: translate3d(0, -300px, 0);
     }
 }
 
 @keyframes rodal-slideDown-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(0, -200px, 0);
-        transform: translate3d(0, -200px, 0);
+        -webkit-transform: translate3d(0, -300px, 0);
+        transform: translate3d(0, -300px, 0);
     }
 }
 
@@ -125,16 +125,16 @@
 @-webkit-keyframes rodal-slideLeft-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(-150px, 0, 0);
-        transform: translate3d(-150px, 0, 0);
+        -webkit-transform: translate3d(-450px, 0, 0);
+        transform: translate3d(-450px, 0, 0);
     }
 }
 
 @keyframes rodal-slideLeft-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(-150px, 0, 0);
-        transform: translate3d(-150px, 0, 0);
+        -webkit-transform: translate3d(-450px, 0, 0);
+        transform: translate3d(-450px, 0, 0);
     }
 }
 
@@ -146,16 +146,16 @@
 @-webkit-keyframes rodal-slideLeft-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(-150px, 0, 0);
-        transform: translate3d(-150px, 0, 0);
+        -webkit-transform: translate3d(-450px, 0, 0);
+        transform: translate3d(-450px, 0, 0);
     }
 }
 
 @keyframes rodal-slideLeft-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(-150px, 0, 0);
-        transform: translate3d(-150px, 0, 0);
+        -webkit-transform: translate3d(-450px, 0, 0);
+        transform: translate3d(-450px, 0, 0);
     }
 }
 
@@ -168,16 +168,16 @@
 @-webkit-keyframes rodal-slideRight-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(150px, 0, 0);
-        transform: translate3d(150px, 0, 0);
+        -webkit-transform: translate3d(450px, 0, 0);
+        transform: translate3d(450px, 0, 0);
     }
 }
 
 @keyframes rodal-slideRight-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(150px, 0, 0);
-        transform: translate3d(150px, 0, 0);
+        -webkit-transform: translate3d(450px, 0, 0);
+        transform: translate3d(450px, 0, 0);
     }
 }
 
@@ -189,16 +189,16 @@
 @-webkit-keyframes rodal-slideRight-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(150px, 0, 0);
-        transform: translate3d(150px, 0, 0);
+        -webkit-transform: translate3d(450px, 0, 0);
+        transform: translate3d(450px, 0, 0);
     }
 }
 
 @keyframes rodal-slideRight-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(150px, 0, 0);
-        transform: translate3d(150px, 0, 0);
+        -webkit-transform: translate3d(450px, 0, 0);
+        transform: translate3d(450px, 0, 0);
     }
 }
 
@@ -211,16 +211,16 @@
 @-webkit-keyframes rodal-slideUp-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(0, 100px, 0);
-        transform: translate3d(0, 100px, 0);
+        -webkit-transform: translate3d(0, 300px, 0);
+        transform: translate3d(0, 300px, 0);
     }
 }
 
 @keyframes rodal-slideUp-enter {
     from {
         opacity: 0;
-        -webkit-transform: translate3d(0, 100px, 0);
-        transform: translate3d(0, 100px, 0);
+        -webkit-transform: translate3d(0, 300px, 0);
+        transform: translate3d(0, 300px, 0);
     }
 }
 
@@ -232,16 +232,16 @@
 @-webkit-keyframes rodal-slideUp-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(0, 100px, 0);
-        transform: translate3d(0, 100px, 0);
+        -webkit-transform: translate3d(0, 300px, 0);
+        transform: translate3d(0, 300px, 0);
     }
 }
 
 @keyframes rodal-slideUp-leave {
     to {
         opacity: 0;
-        -webkit-transform: translate3d(0, 100px, 0);
-        transform: translate3d(0, 100px, 0);
+        -webkit-transform: translate3d(0, 300px, 0);
+        transform: translate3d(0, 300px, 0);
     }
 }
 
