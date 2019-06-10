@@ -6,7 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css压缩
 const CleanWebpackPlugin = require('clean-webpack-plugin') //清空
 var WebpackNotifierPlugin = require('webpack-notifier');   //消息通知
 const DevserverQRcodeWebpackPlugin = require('devserver-qrcode-webpack-plugin');   //二维码
-const webpack = require('webpack')
+const webpack = require('webpack');
+
+const PurifyCSS = require('purifycss-webpack');   //css Tree Shaking
+const glob = require('glob-all');
+
 const HappyPack = require('happypack'); //多线程运行
 const happyThreadPool = HappyPack.ThreadPool({
 	size: 4
@@ -46,6 +50,16 @@ argv.forEach(v => {
 });
 
 const plugins = [
+    // 清除无用 css, css Tree Shaking
+//  new PurifyCSS({
+//    paths: glob.sync([
+//      // 要做 CSS Tree Shaking 的路径文件
+//      path.resolve(__dirname, './src/*.html'), // 请注意，我们同样需要对 html 文件进行 tree shaking
+//      path.resolve(__dirname, './src/*.js')
+//    ])
+//  }),
+
+ 
 	//	new webpack.DllPlugin({
 	//          // 定义程序中打包公共文件的入口文件vendor.js
 	//          context: process.cwd(),
@@ -98,11 +112,23 @@ const plugins = [
 		},
 		exclude: /(node_modules|bower_components)/,
 	}), //压缩，生成map
+	new webpack.HotModuleReplacementPlugin(),
+	new webpack.ProvidePlugin({   //暴露全局变量
+      $: 'jquery', // npm
+      jQuery: 'jQuery' // 本地Js文件
+    }),
+    new webpack.DefinePlugin({  //指定环境,定义环境变量
+      'process.env': {
+        DEV_BASE_URL: JSON.stringify('http://localhost:12307')
+      }
+    })
+ 
 ];
 
 module.exports = {
 	entry: './src/index.tsx',
 	devServer: {
+		hot: true,
 		host: getNetworkIp(),
 		contentBase: path.join(__dirname, 'dist'), //开发服务运行时的文件根目录
 		compress: true, //开发服务器是否启动gzip等压缩
@@ -121,7 +147,11 @@ module.exports = {
 
 	// Enable sourcemaps for debugging webpack's output.
 	devtool: developmentMode ? 'cheap-eval-source-map' : 'source-map', //cheap-eval-source-map  是一种比较快捷的map,没有映射列
-
+    optimization: {
+	    splitChunks: {
+	      chunks: "all", // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
+	    },
+	},
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
 		extensions: ['.ts', '.tsx', '.js', '.json', '.css', '.less'],
