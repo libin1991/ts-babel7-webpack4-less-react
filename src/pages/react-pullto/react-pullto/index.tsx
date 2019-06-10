@@ -96,13 +96,13 @@ export default class ListView extends React.Component {
 		if(this.$$touch.pageY && this.$$touch.pageY < pageY && Math.abs(pageY - this.$$touch.pageY) > Math.abs(pageX - this.$$touch.pageX)) {
 			e.preventDefault();
 			e.stopPropagation();
-			let top = pageY - this.$$touch.pageY;
+			let top = (pageY - this.$$touch.pageY) * 0.5;    //阻尼系数
 			let markHeight = this.$$touch.markHeight;
 			top = top > markHeight * 10 ? markHeight * 10 : top;
 			let cssText = '-webkit-will-change:transform;will-change:transform;-webkit-transform:translate3d(0,' + top + 'px,0);transform:translate3d(0,' + top + 'px,0);'
 			this.innerCss(cssText);
 
-			if(this.$$touch.pageY && pageY - this.$$touch.pageY > (markHeight + 20)) {
+			if(this.$$touch.pageY && pageY - this.$$touch.pageY > (markHeight + 60)) {
 				this.$$touch.inner.classList.add('active');
 
 			} else {
