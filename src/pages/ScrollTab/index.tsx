@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './index.css'
-import ScrollTab from "./ScrollTab.js"
+import ScrollTab from "./ScrollTab"
 
 export default class App extends Component {
 	constructor(props) {

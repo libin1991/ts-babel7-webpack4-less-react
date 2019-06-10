@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Lazyimg from "./lazy-img.js"
+import Lazyimg from "./lazy-img"
 
 import './index.css'
 

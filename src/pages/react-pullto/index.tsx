@@ -1,5 +1,5 @@
 import React from 'react';
-import ListView from './react-pullto'
+import ListView from './react-pullto/index'
 import './index.css'
 
 class Demo extends React.Component {
