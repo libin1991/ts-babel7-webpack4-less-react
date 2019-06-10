@@ -25,8 +25,8 @@ export default class App extends React.Component {
 		//			}
 		//		});
 
-
-		$.success("充值成功",2500);
+        $.toast("操作成功");
+//		$.success("充值成功",2500);
 
 //		$.warning("哈哈组哈哈组件哈哈哈哈组件哈哈哈哈组件哈哈件哈哈", 10000000000, 0, () => {
 //			console.log("ok")
@@ -80,7 +80,6 @@ export default class App extends React.Component {
 			title: "提示信息",
 			content: "消息提示成功",
 			btnSucc: "确定",
-			timer: 500000000000,
 			onSucc(e) {
 				$2.hide()
 			}
@@ -90,10 +89,11 @@ export default class App extends React.Component {
 	actionsheet() {
 		$4.actionsheet({
 			title: '我是标题',
-			arr: ['编辑', '收藏', '分享', '删除', Math.random()],
+			arr: ['编辑', '收藏', '分享', '删除'],
 			opacity: .3,
 			onItem(obj, index) {
 				console.log(obj, index);
+				$4.hide();
 			},
 			onCancel(e) {
 				$4.hide();

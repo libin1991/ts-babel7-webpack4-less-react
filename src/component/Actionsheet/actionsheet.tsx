@@ -12,7 +12,6 @@ export default class Actionsheet extends React.Component {
 			this.props.setting.onCancel();
 		} else if (flag === 1) {
 			this.props.setting.onItem(...list);
-			this.props.setting.onCancel();
 		}
 	}
 
