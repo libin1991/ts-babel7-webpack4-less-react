@@ -11,13 +11,6 @@ class Demo extends React.Component {
 			end: false // 是否还没有更多
 		}
 	}
-	componentDidMount() {
-		setTimeout(() => {
-			this.setState({
-				list: this.getList()
-			})
-		}, 0)
-	}
 
 	getList() {
 		let result = []
@@ -30,19 +23,28 @@ class Demo extends React.Component {
 		return result
 	}
 	handlePullup(down) { //上拉
-		if(this.state.list.length>=70){   //没有更多数据了
-			down(true);
-			return false;
-		}
-		setTimeout(() => { // 模拟ajax请求
-			let list = [...this.state.list]
-			list = list.concat(this.getList())
+		if(this.state.list.length == 0) {
 			this.setState({
-				list: list
-			},()=>{
-				down();
-			})
-		}, 1500);
+				list: this.getList()
+			}, () => {
+				down();   //没有更多数据了
+			});
+		} else {
+			if(this.state.list.length >= 70) { //没有更多数据了
+				down(true);   //没有更多数据了
+				return false;
+			} else {
+				setTimeout(() => { // 模拟ajax请求
+					let list = [...this.state.list]
+					list = list.concat(this.getList())
+					this.setState({
+						list: list
+					}, () => {
+						down();
+					})
+				}, 1500);
+			}
+		}
 	}
 	handlePulldown(down) { //下拉
 		setTimeout(() => { // 模拟ajax请求
@@ -51,14 +53,20 @@ class Demo extends React.Component {
 			this.setState({
 				loading: false,
 				list: list
-			},()=>{
+			}, () => {
 				down();
 			})
 		}, 1500);
 	}
+	
+	onScroll(e,val){
+		console.log(e,val);
+	}
+	
 	render() {
 		return(
 			<ListView
+                onScroll={this.onScroll.bind(this)}
 	            onInfinite={this.handlePullup.bind(this)}
 	            onRefresh={this.handlePulldown.bind(this)}
                 >

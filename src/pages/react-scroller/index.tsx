@@ -70,13 +70,17 @@ export default class ReactComponent extends Component {
 	onItemClick(index, item) {
 		console.log(index,item);
 	}
-
+    onScroll(e,val){
+		console.log(e,val);
+	}
 	render() {
 		return(
 			<div>
 				<Scroller
-					onRefresh={this.refresh}
-					onInfinite={this.infinite}>
+					onScroll={this.onScroll.bind(this)}
+	                onInfinite={this.infinite.bind(this)}
+	                onRefresh={this.refresh.bind(this)}>
+	                
 					{this.state.items.map((item, index) => (
 						<div key={index} onClick={this.onItemClick.bind(this, index, item)} className="row">
 							{item}

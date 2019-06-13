@@ -3,7 +3,19 @@ import PropTypes from 'prop-types'
 import arrow from "./img/arrow.svg"
 import spinner from "./img/spinner.svg"
 import "./index.css"
-export default class ListView extends React.Component {
+
+interface Props {
+    pullDownText: string,
+    refreshText: string,
+    loadingText: string,
+	endText: string
+}
+interface State {
+    status: number ,   // 0 箭头  1 loading
+	loadstate:number
+}
+
+export default class ListView extends React.Component<Partial<Props>, Partial<State>> {
 
 	static defaultProps = {
 		pullDownText: '下拉刷新',
@@ -30,14 +42,21 @@ export default class ListView extends React.Component {
 	}
 
 	componentDidMount() {
-
 		this.$el = this.refs.$el;
-
+		this.props.onInfinite && this.props.onInfinite(this.hasData);    //首次拉取数据
+		
 		let timer = null;
+		var  beforeScrollTop = this.$el.scrollTop;
 		this.props.onInfinite && this.$el.addEventListener('scroll', (e) => {
+			
+			var afterScrollTop = this.$el.scrollTop,
+            var delta = afterScrollTop - beforeScrollTop;
+            this.props.onScroll&&this.props.onScroll(e , delta > 0 ? "down" : "up" );
+			beforeScrollTop = afterScrollTop;
+			
 			timer && clearTimeout(timer);
 			timer = setTimeout(() => {
-				this.handleScroll(e)
+				this.handleScroll(e);
 			}, 200);
 		});
 
@@ -150,7 +169,7 @@ export default class ListView extends React.Component {
 	
 	handleScroll(e) {
 		if(this.$el.scrollHeight - this.$$height - this.$el.scrollTop <= 10) {
-			this.props.onInfinite && this.props.onInfinite(this.hasData)
+			this.props.onInfinite && this.props.onInfinite(this.hasData);
 		}
 	}
 

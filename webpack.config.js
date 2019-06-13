@@ -1,11 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //html
-const tsImportPluginFactory = require('ts-import-plugin')
+const tsImportPluginFactory = require('ts-import-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); //多线程压缩
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //css压缩
+
+
+
 const CleanWebpackPlugin = require('clean-webpack-plugin') //清空
 var WebpackNotifierPlugin = require('webpack-notifier');   //消息通知
 const DevserverQRcodeWebpackPlugin = require('devserver-qrcode-webpack-plugin');   //二维码
+
+
 const webpack = require('webpack');
 
 const PurifyCSS = require('purifycss-webpack');   //css Tree Shaking
@@ -15,6 +20,7 @@ const HappyPack = require('happypack'); //多线程运行
 const happyThreadPool = HappyPack.ThreadPool({
 	size: 4
 });
+
 const os = require('os');
 function getNetworkIp() {      //获取IP
 	let needHost = ''; // 打开的host
@@ -35,9 +41,7 @@ function getNetworkIp() {      //获取IP
 	}
 	return needHost;
 }
-
 console.log(getNetworkIp())
-
 const {
 	argv
 } = process;

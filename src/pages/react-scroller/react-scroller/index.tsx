@@ -107,6 +107,8 @@ export default class ReactComponent extends Component {
 			});
 		}
 		
+		
+		var  beforeScrollTop=0;
 		if(this.props.onInfinite) {    // 无限加载
 			this.infiniteTimer = setInterval(() => {
 				let {
@@ -114,7 +116,11 @@ export default class ReactComponent extends Component {
 					top,
 					zoom
 				} = this.scroller.getValues();
-
+				
+                var delta = top - beforeScrollTop;
+                !!delta&&this.props.onScroll&&this.props.onScroll( top , delta > 0 ? "down" : "up" );
+			    beforeScrollTop = top;
+                
 				if((this.content.offsetHeight > 0) && (this.container.clientHeight + top + 10 > this.content.offsetHeight)) {
 					if(this.state.loadingState) return
 					this.setState({
@@ -303,6 +309,7 @@ export default class ReactComponent extends Component {
 		} = this.state;
 		
 		const {
+			onRefresh,
 			refreshText,
 			refreshingText,
 			noDataText,
@@ -313,11 +320,11 @@ export default class ReactComponent extends Component {
 			<div ref="$container" className="_v-container" style={{top:-this.props.height}}>
 		         <div ref="$contain" className="_v-content">
 		           <div className={`pull-to-refresh-layer ${status == 1 ? "active":""} ${status == 2?"active refreshing":""}`} style={{height:this.props.height,fontSize:this.props.fontSize}}>
-						<span className="spinner-holder">
+						{onRefresh && <span className="spinner-holder">
 						    {status!= 2 && <img  className="arrow" src={arrow} style={{height:this.props.arrowW,width:this.props.arrowW}} />}
 					        {status!= 2 && <span className="text" style={{color: '#aaaaaa',fontSize:14,lineHeight: '20PX'}}>{ status == 1 ? refreshingText : refreshText} </span> }
 					        {status == 2 && <img className="spinner" src={spinner} style={{height:this.props.spinnerW,width:this.props.spinnerW}} />}
-						</span>
+						</span>}
 					</div>
 					
 					{children}
