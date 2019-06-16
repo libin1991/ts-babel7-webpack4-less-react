@@ -1,7 +1,7 @@
 import React from 'react';
 import ListView from './react-pullto/index'
 import './index.css'
-
+//import ListView from '../../../../../code/baidu/haokan-fe/haokan-common/packages/haokan-ui/src/loading'
 class Demo extends React.Component {
 	constructor(props) {
 		super(props)

@@ -225,16 +225,7 @@ module.exports = {
 							autoprefixer: {
 								flexbox: 'no-2009',
 							},
-							stage: 3,
-							browsers: [
-								'> 1%',
-								'last 2 versions',
-								'Firefox ESR',
-								'Opera 12.1',
-								'not ie <= 8',
-								'Android >= 4.0',
-								'iOS 7'
-							]
+							stage: 3
 						}),
 						require('postcss-aspect-ratio-mini')({}),
 						// require('postcss-px-to-viewport')({
