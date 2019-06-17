@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './index.css'
-import ScrollTab from "./ScrollTab"
+import {Tab as ScrollTab} from "@/baidu/tab"
 
 export default class App extends Component {
 	constructor(props) {

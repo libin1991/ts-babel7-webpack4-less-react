@@ -1,7 +1,12 @@
 import React from "react";
 import './alert.less'
-import Transition from '../transition/Transition'
-import TransitionGroup from '../transition/TransitionGroup'
+
+import {Transition} from '@/baidu/transition/Transition'
+import {TransitionGroup} from '@/baidu/transition/TransitionGroup'
+
+//import Transition from '../transition/Transition'
+//import TransitionGroup from '../transition/TransitionGroup'
+
 export default class Alert extends React.Component {
 	render() {
 		let {

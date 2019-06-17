@@ -1,8 +1,10 @@
 import React from "react";
 import './toast.less'
+//import Transition from '../transition/Transition'
+//import TransitionGroup from '../transition/TransitionGroup'
 
-import Transition from '../transition/Transition'
-import TransitionGroup from '../transition/TransitionGroup'
+import {Transition} from '@/baidu/transition/Transition'
+import {TransitionGroup} from '@/baidu/transition/TransitionGroup'
 
 
 export default class Toast extends React.Component {
@@ -40,7 +42,7 @@ export default class Toast extends React.Component {
 		return(
 			<div className="mask" style={style}>
 			 <TransitionGroup component="div">
-				  <Transition className="slideDown"> 
+				  <Transition className="door"> 
 				     <div className="toast">
 				        {this.checkToast(type)}
 				        <div className="msg">{content}</div>

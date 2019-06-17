@@ -25,8 +25,8 @@ export default class App extends React.Component {
 		//			}
 		//		});
 
-        $.toast("操作成功！！！");
-//		$.success("充值成功",2500);
+        //$.toast("操作成功！！！");
+		$.success("充值成功",2500);
 
 //		$.warning("哈哈组哈哈组件哈哈哈哈组件哈哈哈哈组件哈哈件哈哈", 10000000000, 0, () => {
 //			console.log("ok")

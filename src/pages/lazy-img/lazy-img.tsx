@@ -2,26 +2,34 @@
  * image lazyload
  */
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from "prop-types"
 
-const ref = 'lazyload'
+const ref = 'lazyload';
+interface Props {
+	src: string,
+	alt:string,
+	style?:object,
+	className?:string,
 
-export default class LazyImg extends Component {
+}
 
-	constructor(props) {
+interface State {
+	src: string,   // 0 箭头  1 loading
+	loaded: boolean
+}
+export default class LazyImg extends Component<Partial<Props>, Partial<State>> {
+
+	constructor(props:any) {
 		super(props);
 		this.loadImg = this.loadImg.bind(this);
 		this.state = {
-			src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559998138555&di=b689ed7dfc64136bf6e892204042a827&imgtype=0&src=http%3A%2F%2Fimg.mp.sohu.com%2Fupload%2F20170720%2Fcd59c28a4c6d49bc8b4ecfcdffbc04f1_th.png',
+			src: '',
 			loaded: false
 		}
-
 	}
 
 	loadImg() {
 		if(!this.props.src) {
-			return
+			return false;
 		}
 		let image = new Image()
 		image.onload = () => {
@@ -30,15 +38,15 @@ export default class LazyImg extends Component {
 				loaded: true
 			})
 		}
-		image.src = this.props.src
+		image.src = this.props.src;
 	}
 
 	componentDidMount() {
-		const self = this;
+		const self:any = this;
 		if('IntersectionObserver' in window) {
 			var io = new IntersectionObserver(
 				entries => {
-					entries.forEach(i => {
+					entries.forEach((i:any)=> {
 						if(i.intersectionRatio >= 0.25) { //可见元素占视窗的25%触发
 							i.target.src = self.props.src
 						}
@@ -60,20 +68,13 @@ export default class LazyImg extends Component {
 					self.loadImg()
 				}
 			}, true);
-
 		}
-
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener('scroll', this.scrollHandler, true)
 	}
 
 	render() {
 		var {
 			src,
 			...listprop
-			
 		} = this.props;
 
 		return <img src={this.state.src} {...listprop} ref={ref} />
